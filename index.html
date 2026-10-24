@@ -3,473 +3,479 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <title>Rahil Siddique, Tech Consultant | Software, AI &amp; Systems</title>
+    <title>Rahil Siddique | AI Engineer & Cloud Architect</title>
     <meta
       name="description"
-      content="Rahil Siddique is a Melbourne-based tech consultant and software professional. Ten years across software engineering, AI/SaaS, cloud, systems integration and operations. Available for permanent, contract and sole-trader engagements."
+      content="Rahil Siddique - Senior Software Engineer specializing in AI/SaaS, RAG systems, and cloud architecture. Building production-ready AI products with React, .NET, and Azure."
     />
-    <meta name="theme-color" content="#0b1210" />
+    <meta name="theme-color" content="#0a0e1a" />
     <meta name="author" content="Rahil Siddique" />
-    <link rel="canonical" href="./" />
-
-    <meta property="og:type" content="profile" />
-    <meta property="og:title" content="Rahil Siddique, Tech Consultant" />
-    <meta
-      property="og:description"
-      content="Software engineering, AI/SaaS, cloud and systems, Melbourne. Open to hiring managers, recruiters and contract work."
-    />
-    <meta property="og:locale" content="en_AU" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Rahil Siddique, Tech Consultant" />
-    <meta
-      name="twitter:description"
-      content="Ten years spanning engineering, AI, cloud and operations. Available for permanent and contract roles."
-    />
-
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b1210'/%3E%3Ctext x='32' y='42' text-anchor='middle' font-family='Georgia' font-size='28' fill='%23c9a66b'%3ERS%3C/text%3E%3C/svg%3E" />
-
+    
+    <!-- Spline Runtime for 3D scenes -->
+    <script type="module" src="https://unpkg.com/@splinetool/runtime@1.0.5/build/runtime.js"></script>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Outfit:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
 
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Rahil Siddique",
-        "jobTitle": "Tech Consultant",
-        "description": "Software and technology professional with more than ten years of experience spanning software engineering, AI/SaaS, cloud platforms, systems integration and operations.",
-        "email": "mailto:mdrahil@gmail.com",
-        "telephone": "+61431864419",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Melbourne",
-          "addressRegion": "VIC",
-          "addressCountry": "AU"
-        },
-        "knowsAbout": [
-          "Software Engineering",
-          "AI and SaaS",
-          "RAG",
-          "Cloud",
-          "Systems Integration",
-          "IT Consulting"
-        ]
-      }
-    </script>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230a0e1a'/%3E%3Ctext x='32' y='42' text-anchor='middle' font-family='Arial' font-size='28' font-weight='700' fill='%236366f1'%3ERS%3C/text%3E%3C/svg%3E" />
   </head>
   <body>
-    <a class="skip-link" href="#main">Skip to content</a>
-    <div class="atmosphere" aria-hidden="true"></div>
+    <!-- 3D Background Canvas - Spline Scene Container -->
+    <div class="spline-container" id="hero-3d">
+      <!-- Replace this comment with Spline embed: 
+      <spline-viewer url="https://prod.spline.design/YOUR-SCENE-URL/scene.splinecode"></spline-viewer>
+      -->
+      <div class="gradient-fallback"></div>
+    </div>
 
-    <header class="site-header" data-header>
-      <div class="wrap header-inner">
-        <a class="brand" href="#top">
-          <span class="brand-mark">RS</span>
-          <span class="brand-text">
-            <strong>Rahil Siddique</strong>
-            <small>Tech Consultant</small>
-          </span>
+    <!-- Navigation -->
+    <nav class="navbar" role="navigation">
+      <div class="nav-content">
+        <a href="#home" class="logo">
+          <span class="logo-icon">RS</span>
+          <span class="logo-text">Rahil Siddique</span>
         </a>
-        <nav class="nav" data-nav aria-label="Primary">
+        
+        <div class="nav-links">
+          <a href="#expertise">Expertise</a>
+          <a href="#work">Work</a>
           <a href="#journey">Journey</a>
-          <a href="#practice">Practice</a>
-          <a href="#experience">Experience</a>
-          <a href="#engage">Engage</a>
-        </nav>
-        <div class="header-actions">
-          <span class="avail-pill">Open to work</span>
-          <a class="btn btn-sm" href="mailto:mdrahil@gmail.com">Contact</a>
-          <button class="menu-btn" type="button" data-menu-toggle aria-expanded="false" aria-controls="mobile-nav">
-            <span class="sr-only">Menu</span>
-            <i class="icon-lucide" data-lucide="menu" aria-hidden="true"></i>
-          </button>
+          <a href="#contact" class="nav-cta">Let's Connect</a>
         </div>
+
+        <button class="mobile-menu-toggle" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
-      <div class="mobile-nav" id="mobile-nav" data-mobile-nav hidden>
-        <a href="#journey">Journey</a>
-        <a href="#practice">Practice</a>
-        <a href="#experience">Experience</a>
-        <a href="#engage">Engage</a>
-        <a href="mailto:mdrahil@gmail.com">Email Rahil</a>
-      </div>
-    </header>
+    </nav>
 
-    <main id="main">
-      <section class="hero" id="top">
-        <div class="wrap hero-grid">
-          <div class="hero-copy">
-            <p class="eyebrow">
-              <span class="dot"></span>
-              Melbourne, VIC · Sole trader & contract-ready · AU / remote
-            </p>
-            <h1>
-              Technology that ships.<br />
-              <em>Advice that holds up</em> in production.
-            </h1>
-            <p class="lede">
-              I am a tech consultant and software professional with more than ten years across
-              engineering, AI/SaaS, cloud, systems integration, automation and customer-facing
-              operations. This page is the short version of that journey, for recruiters, hiring
-              managers, and organisations that need a contractor who can own the outcome.
-            </p>
-            <div class="hero-meta">
-              <a href="tel:+61431864419"><i class="icon-lucide" data-lucide="phone"></i> +61 431 864 419</a>
-              <a href="mailto:mdrahil@gmail.com"><i class="icon-lucide" data-lucide="mail"></i> mdrahil@gmail.com</a>
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="#expertise">Expertise</a>
+      <a href="#work">Work</a>
+      <a href="#journey">Journey</a>
+      <a href="#contact">Contact</a>
+    </div>
+
+    <main>
+      <!-- Hero Section -->
+      <section class="hero" id="home">
+        <div class="hero-content">
+          <div class="status-badge">
+            <span class="status-dot"></span>
+            <span>Available for opportunities</span>
+          </div>
+          
+          <h1 class="hero-title">
+            Building AI Systems<br />
+            <span class="gradient-text">That Actually Ship</span>
+          </h1>
+          
+          <p class="hero-description">
+            Senior Software Engineer with 10+ years architecting RAG-driven AI products, 
+            HIPAA-compliant systems, and cloud-native solutions. From prototype to production.
+          </p>
+
+          <div class="hero-stats">
+            <div class="stat">
+              <span class="stat-value">10+</span>
+              <span class="stat-label">Years Experience</span>
             </div>
-            <div class="cta-row">
-              <a class="btn" href="#engage">Work with me</a>
-              <a class="btn btn-ghost" href="#journey">Read the journey</a>
+            <div class="stat">
+              <span class="stat-value">AI/ML</span>
+              <span class="stat-label">RAG & LLMs</span>
+            </div>
+            <div class="stat">
+              <span class="stat-value">Global</span>
+              <span class="stat-label">Remote-First</span>
             </div>
           </div>
-          <aside class="hero-card" aria-label="Snapshot">
-            <p class="card-kicker">Now</p>
-            <h2>Senior Software Engineer</h2>
-            <p class="org">Zuzis · NY, USA · Sep 2025 – Present</p>
-            <p>
-              Architecting RAG-driven, HIPAA-aware AI products: React dashboards, Azure Cognitive
-              Search, custom vector stores, and API-first delivery from prototype to production.
-            </p>
-            <ul class="stat-row">
-              <li><strong>10+</strong><span>years in tech</span></li>
-              <li><strong>AI/SaaS</strong><span>to operations</span></li>
-              <li><strong>AU</strong><span>based, globally delivered</span></li>
-            </ul>
-          </aside>
-        </div>
-      </section>
 
-      <section class="band" id="engage-modes">
-        <div class="wrap">
-          <h2 class="section-title">How we can work together</h2>
-          <p class="section-lead">
-            One practice, three ways in. I keep the same standard whether I join a team, land for a
-            program, or invoice as a sole trader.
-          </p>
-          <div class="mode-grid">
-            <article class="panel">
-              <i class="icon-lucide" data-lucide="building-2"></i>
-              <h3>Permanent roles</h3>
-              <p>
-                Senior engineering, AI product, or technical leadership where depth in .NET, React,
-                cloud and search actually changes how the team ships.
-              </p>
-            </article>
-            <article class="panel">
-              <i class="icon-lucide" data-lucide="briefcase"></i>
-              <h3>Contract assignments</h3>
-              <p>
-                Defined outcomes: RAG assistants, CMS/search modernisation, Azure pipelines,
-                integration work, or a surge of production-ready engineering.
-              </p>
-            </article>
-            <article class="panel">
-              <i class="icon-lucide" data-lucide="handshake"></i>
-              <h3>Sole trader consulting</h3>
-              <p>
-                Direct engagement for Australian and remote clients who want one accountable
-                consultant, architecture, build, handover and operational support.
-              </p>
-            </article>
+          <div class="hero-actions">
+            <a href="#contact" class="btn btn-primary">Get in Touch</a>
+            <a href="#work" class="btn btn-secondary">View Work</a>
+          </div>
+
+          <div class="hero-meta">
+            <a href="mailto:mdrahil@gmail.com" class="meta-link">
+              <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="m22 6-10 7L2 6"/></svg>
+              mdrahil@gmail.com
+            </a>
+            <a href="tel:+61431864419" class="meta-link">
+              <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              +61 431 864 419
+            </a>
+            <span class="meta-link location">
+              <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Melbourne, VIC
+            </span>
           </div>
         </div>
+
+        <div class="scroll-indicator">
+          <span>Scroll to explore</span>
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m7 13 5 5 5-5M7 6l5 5 5-5"/></svg>
+        </div>
       </section>
 
-      <section class="section" id="practice">
-        <div class="wrap split">
-          <div>
-            <p class="eyebrow">Profile</p>
-            <h2 class="display">A practical operator who still writes the code.</h2>
-            <p>
-              Strong problem solver with a practical, adaptable approach to technology, operations
-              and new environments. Comfortable sitting with engineering, clinical or mortgage
-              domain experts, then translating that into systems that people actually use.
-            </p>
-            <p>
-              The through-line is simple: diagnose the real constraint, choose the smallest honest
-              architecture, then ship with CI/CD, documentation and a human in the loop where it
-              matters.
+      <!-- Expertise Section -->
+      <section class="section" id="expertise">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-tag">Core Competencies</span>
+            <h2 class="section-title">Technical Expertise</h2>
+            <p class="section-subtitle">
+              Full-stack engineering with deep focus on AI/ML integration, 
+              cloud architecture, and production-grade systems
             </p>
           </div>
-          <div>
-            <h3 class="subtle-head">Key strengths</h3>
-            <ul class="chips">
-              <li>Software Engineering</li>
-              <li>AI &amp; SaaS</li>
-              <li>Technical Troubleshooting</li>
-              <li>Systems Integration</li>
-              <li>Automation</li>
-              <li>IT &amp; Technical Support</li>
-              <li>Customer Service</li>
-              <li>Problem Solving</li>
-              <li>Teamwork</li>
-              <li>Adaptability</li>
-              <li>Safety Awareness</li>
-            </ul>
+
+          <div class="expertise-grid">
+            <div class="expertise-card featured">
+              <div class="card-icon ai-icon">
+                <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="m3.3 7 8.7 5 8.7-5M12 22.08V12"/></svg>
+              </div>
+              <h3>AI & Machine Learning</h3>
+              <p>RAG systems, LLMs, vector stores, AI assistants, HIPAA-compliant ML pipelines</p>
+              <div class="tech-tags">
+                <span>RAG</span>
+                <span>LLMs</span>
+                <span>Vector DB</span>
+                <span>Azure AI</span>
+              </div>
+            </div>
+
+            <div class="expertise-card">
+              <div class="card-icon">
+                <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 3 4 4-4 4M21 7H9m7 10-4 4 4 4M3 17h12"/></svg>
+              </div>
+              <h3>Languages & Frameworks</h3>
+              <p>C#, Python, TypeScript, JavaScript, SQL</p>
+              <div class="tech-tags">
+                <span>.NET</span>
+                <span>React</span>
+                <span>ASP.NET MVC</span>
+                <span>Node.js</span>
+              </div>
+            </div>
+
+            <div class="expertise-card">
+              <div class="card-icon">
+                <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
+              </div>
+              <h3>Cloud & DevOps</h3>
+              <p>Azure, AWS, Docker, CI/CD, Infrastructure as Code</p>
+              <div class="tech-tags">
+                <span>Azure</span>
+                <span>Docker</span>
+                <span>Bicep</span>
+                <span>YAML</span>
+              </div>
+            </div>
+
+            <div class="expertise-card">
+              <div class="card-icon">
+                <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+              </div>
+              <h3>Search & CMS</h3>
+              <p>Azure Cognitive Search, Coveo, Solr, Sitecore, WordPress</p>
+              <div class="tech-tags">
+                <span>Cognitive Search</span>
+                <span>Coveo</span>
+                <span>Sitecore</span>
+              </div>
+            </div>
+
+            <div class="expertise-card">
+              <div class="card-icon">
+                <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+              </div>
+              <h3>Integration & Automation</h3>
+              <p>REST APIs, webhooks, n8n, Make, Zapier, systems integration</p>
+              <div class="tech-tags">
+                <span>REST</span>
+                <span>APIs</span>
+                <span>Automation</span>
+              </div>
+            </div>
+
+            <div class="expertise-card">
+              <div class="card-icon">
+                <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              </div>
+              <h3>Security & Compliance</h3>
+              <p>HIPAA-compliant systems, secure architectures, data privacy</p>
+              <div class="tech-tags">
+                <span>HIPAA</span>
+                <span>Security</span>
+                <span>Compliance</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <section class="section skills" id="skills">
-        <div class="wrap">
-          <p class="eyebrow">Technical practice</p>
-          <h2 class="section-title">The stack I take into engagements</h2>
-          <div class="skill-grid">
-            <article>
-              <h3>AI &amp; SaaS</h3>
-              <p>LLMs, RAG, vector stores, AI assistants, HIPAA-aware product patterns.</p>
-            </article>
-            <article>
-              <h3>Languages</h3>
-              <p>C#, Python, JavaScript / TypeScript, SQL.</p>
-            </article>
-            <article>
-              <h3>Frameworks</h3>
-              <p>.NET, ASP.NET MVC, React.</p>
-            </article>
-            <article>
-              <h3>Cloud &amp; DevOps</h3>
-              <p>Azure, AWS, Docker, CI/CD, Infrastructure as Code, Bicep, Azure DevOps YAML.</p>
-            </article>
-            <article>
-              <h3>Search &amp; CMS</h3>
-              <p>Sitecore, WordPress, Azure Cognitive Search, Coveo, Solr.</p>
-            </article>
-            <article>
-              <h3>Integration</h3>
-              <p>REST APIs, systems integration, automation, n8n, Make, Zapier.</p>
-            </article>
+      <!-- Current Work -->
+      <section class="section section-dark" id="work">
+        <div class="container">
+          <div class="current-work">
+            <div class="work-content">
+              <span class="work-tag">Current Position</span>
+              <h2>Senior Software Engineer</h2>
+              <p class="work-company">Zuzis · New York, USA · Sep 2025 – Present</p>
+              
+              <div class="work-description">
+                <p>
+                  Architecting and building RAG-driven, HIPAA-compliant AI assistant dashboards 
+                  using React, TypeScript, Azure Cognitive Search, and custom vector stores to 
+                  support real-time medical documentation workflows.
+                </p>
+              </div>
+
+              <div class="work-highlights">
+                <div class="highlight">
+                  <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>Shipped 2 AI-native products from prototype to production</span>
+                </div>
+                <div class="highlight">
+                  <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>Established CI/CD with automated quality checks & approval gates</span>
+                </div>
+                <div class="highlight">
+                  <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>Integrated Coveo & Solr for clinical knowledge retrieval</span>
+                </div>
+                <div class="highlight">
+                  <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>Enhanced WordPress with custom AI chat integrations</span>
+                </div>
+              </div>
+
+              <div class="tech-stack">
+                <span>React</span>
+                <span>TypeScript</span>
+                <span>Python</span>
+                <span>.NET</span>
+                <span>Azure AI</span>
+                <span>RAG</span>
+                <span>Vector Stores</span>
+                <span>Coveo</span>
+                <span>Solr</span>
+              </div>
+            </div>
+
+            <!-- 3D Scene Container for Work Visualization -->
+            <div class="work-visual">
+              <div class="spline-work-container">
+                <!-- Spline 3D scene placeholder -->
+                <div class="visual-placeholder">
+                  <div class="floating-card">
+                    <div class="card-metric">
+                      <span class="metric-value">2</span>
+                      <span class="metric-label">AI Products Shipped</span>
+                    </div>
+                  </div>
+                  <div class="floating-card delay-1">
+                    <div class="card-metric">
+                      <span class="metric-value">100%</span>
+                      <span class="metric-label">HIPAA Compliant</span>
+                    </div>
+                  </div>
+                  <div class="floating-card delay-2">
+                    <div class="card-metric">
+                      <span class="metric-value">API</span>
+                      <span class="metric-label">First Architecture</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <section class="section journey" id="journey">
-        <div class="wrap">
-          <p class="eyebrow">Digital journey</p>
-          <h2 class="section-title">From the shop floor to AI products</h2>
-          <p class="section-lead">
-            Each chapter added a layer: customer trust, hardware, networks, healthcare operations,
-            regulated enterprise search, then AI-native product. Recruiters usually want the last
-            two roles. Hiring managers should see the decade that makes those roles possible.
-          </p>
+      <!-- Journey Timeline -->
+      <section class="section" id="journey">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-tag">Career Path</span>
+            <h2 class="section-title">Professional Journey</h2>
+            <p class="section-subtitle">
+              10+ years from technical support to AI engineering, 
+              building systems across healthcare, finance, and enterprise
+            </p>
+          </div>
 
-          <ol class="timeline">
-            <li>
-              <div class="when">Sep 2025 – Present</div>
-              <div class="what">
-                <h3>Senior Software Engineer · Zuzis</h3>
-                <p class="place">NY, USA · AI-native product</p>
-                <ul>
-                  <li>
-                    Architected and built a RAG-driven, HIPAA-compliant AI assistant dashboard using
-                    React, TypeScript, Azure Cognitive Search and custom vector stores for real-time
-                    medical documentation.
-                  </li>
-                  <li>
-                    Shipped two AI-native products from prototype to production on an API-first
-                    architecture, owning development, testing, documentation, deployment and
-                    iteration.
-                  </li>
-                  <li>
-                    Established an AI-assisted engineering workflow with CI/CD, automated quality
-                    checks and human approval gates for production.
-                  </li>
-                  <li>
-                    Integrated Coveo and Solr for clinical knowledge retrieval; enhanced WordPress
-                    with custom widgets, embedded AI chat and site-wide API integrations.
-                  </li>
-                </ul>
-                <p class="tech">
-                  C# · .NET · ASP.NET MVC · React · TypeScript · Python · WordPress · Azure Cognitive
-                  Search · LLMs · RAG · Vector stores · Coveo · SQL · Solr · REST · CI/CD
-                </p>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <span class="timeline-date">Sep 2025 – Present</span>
+                <h3>Senior Software Engineer</h3>
+                <p class="timeline-company">Zuzis · New York, USA</p>
+                <p class="timeline-desc">RAG-driven AI products, HIPAA compliance, React dashboards, Azure AI integration</p>
               </div>
-            </li>
-            <li>
-              <div class="when">Jan 2024 – Sep 2025</div>
-              <div class="what">
-                <h3>Software Developer II · United Wholesale Mortgage</h3>
-                <p class="place">MI, USA · Regulated enterprise</p>
-                <ul>
-                  <li>
-                    Built RAG solutions grounded in enterprise data, with multi-tenant indexing and
-                    compliance, surfaced through React portals and chat assistants.
-                  </li>
-                  <li>
-                    Modernised .NET services and Sitecore CMS on Azure, performance, deployment
-                    reliability and operational efficiency.
-                  </li>
-                  <li>
-                    Created Azure DevOps YAML pipelines for releases, environment config, deployment
-                    validation and retraining triggers.
-                  </li>
-                  <li>Integrated Coveo with Solr for indexing, ranking and content relevance.</li>
-                </ul>
-                <p class="tech">
-                  C# · .NET · ASP.NET MVC · React · TypeScript · Sitecore 9/10 · PowerShell · RAG ·
-                  LLMs · Azure Cognitive Search · Azure DevOps · YAML · Docker · Bicep · Coveo · Solr
-                </p>
-              </div>
-            </li>
-            <li>
-              <div class="when">Aug 2021 – Dec 2023</div>
-              <div class="what">
-                <h3>IT Services Engineer · Sonic Healthcare</h3>
-                <p class="place">Sydney, Australia · Clinical operations</p>
-                <ul>
-                  <li>
-                    Supported enterprise applications, infrastructure and integrated business
-                    systems in a healthcare environment.
-                  </li>
-                  <li>
-                    Built and maintained software and automation for operational requirements;
-                    owned deployments, integrations and production incidents.
-                  </li>
-                </ul>
-                <p class="tech">
-                  Python · PowerShell · JavaScript · Docker · Tableau · R · YAML · Systems admin ·
-                  MDM · Application deployment · SQL · Systems integration
-                </p>
-              </div>
-            </li>
-            <li>
-              <div class="when">Nov 2019 – Jul 2021</div>
-              <div class="what">
-                <h3>Network Engineer · Built Environment Channel</h3>
-                <p class="place">Melbourne, Australia · Infrastructure &amp; digital</p>
-                <ul>
-                  <li>Managed WAN/LAN, DNS, DHCP and network services across business environments.</li>
-                  <li>
-                    Built client-facing platforms with .NET, JavaScript and React; administered
-                    WordPress and Navori CMS for content, integrations and digital signage.
-                  </li>
-                </ul>
-                <p class="tech">
-                  .NET · C# · React · JavaScript · SQL · Sitecore · WordPress · Navori · PowerShell ·
-                  WAN/LAN · DHCP · DNS
-                </p>
-              </div>
-            </li>
-            <li>
-              <div class="when">Sep 2018 – Oct 2019</div>
-              <div class="what">
-                <h3>Technical Escalations Manager · Hisense</h3>
-                <p class="place">Melbourne, Australia · Consumer electronics</p>
-                <ul>
-                  <li>
-                    Owned complex escalations and consumer-law enquiries across customers, support
-                    and engineering.
-                  </li>
-                  <li>
-                    Diagnosed Android, firmware and software issues; contributed documentation for
-                    new products, known issues and troubleshooting.
-                  </li>
-                </ul>
-                <p class="tech">
-                  Android · Firmware · Embedded systems · Root-cause analysis · Bug tracking ·
-                  Technical documentation
-                </p>
-              </div>
-            </li>
-            <li>
-              <div class="when">Jul 2016 – Aug 2018</div>
-              <div class="what">
-                <h3>Technical Manager · Apple</h3>
-                <p class="place">Melbourne, Australia · Premium support</p>
-                <ul>
-                  <li>
-                    Led technical support and escalation management, advanced troubleshooting,
-                    engineering support and issue resolution across Apple products and services.
-                  </li>
-                </ul>
-                <p class="tech">
-                  ASP.NET · JavaScript · Unix · SQL · Escalation management · Technical leadership
-                </p>
-              </div>
-            </li>
-          </ol>
-        </div>
-      </section>
+            </div>
 
-      <section class="section muted-section" id="experience">
-        <div class="wrap">
-          <p class="eyebrow">Foundations</p>
-          <h2 class="section-title">Earlier experience &amp; education</h2>
-          <div class="foundation-grid">
-            <article>
-              <h3>Junior Software Developer (part-time)</h3>
-              <p class="place">Tavares Digital · 2015</p>
-              <p>Mobile application development, client requirements, B2B delivery.</p>
-            </article>
-            <article>
-              <h3>Point-of-sale &amp; retail assistant</h3>
-              <p class="place">Caltex · 2015</p>
-              <p>Face-to-face service, sales, stock ordering and inventory.</p>
-            </article>
-            <article>
-              <h3>Municipal maintenance worker</h3>
-              <p class="place">Yarra Council · 2015</p>
-              <p>Bushfire-prevention work, land maintenance, drainage and public-space care.</p>
-            </article>
-            <article class="edu">
-              <h3>Master of Science, IT Systems Analysis</h3>
-              <p class="place">Charles Sturt University · Melbourne, Australia</p>
-            </article>
-            <article class="edu">
-              <h3>Bachelor of Engineering, Electronics &amp; Instrumentation</h3>
-              <p class="place">Osmania University · Hyderabad, India</p>
-            </article>
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <span class="timeline-date">Jan 2024 – Sep 2025</span>
+                <h3>Software Developer II</h3>
+                <p class="timeline-company">United Wholesale Mortgage · Michigan, USA</p>
+                <p class="timeline-desc">Enterprise RAG solutions, Sitecore modernization, Azure DevOps pipelines, multi-tenant indexing</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <span class="timeline-date">Aug 2021 – Dec 2023</span>
+                <h3>IT Services Engineer</h3>
+                <p class="timeline-company">Sonic Healthcare · Sydney, Australia</p>
+                <p class="timeline-desc">Enterprise applications, automation, infrastructure support, clinical systems integration</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <span class="timeline-date">Nov 2019 – Jul 2021</span>
+                <h3>Network Engineer</h3>
+                <p class="timeline-company">Built Environment Channel · Melbourne, Australia</p>
+                <p class="timeline-desc">WAN/LAN infrastructure, web applications, CMS administration, digital platforms</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <span class="timeline-date">Sep 2018 – Oct 2019</span>
+                <h3>Technical Escalations Manager</h3>
+                <p class="timeline-company">Hisense · Melbourne, Australia</p>
+                <p class="timeline-desc">Complex escalations, firmware diagnostics, engineering coordination, technical documentation</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <span class="timeline-date">Jul 2016 – Aug 2018</span>
+                <h3>Technical Manager</h3>
+                <p class="timeline-company">Apple · Melbourne, Australia</p>
+                <p class="timeline-desc">Technical leadership, escalation management, advanced troubleshooting, engineering support</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <section class="engage" id="engage">
-        <div class="wrap engage-inner">
-          <p class="eyebrow">Next conversation</p>
-          <h2 class="display">If you are hiring, briefing, or scoping a contract, start here.</h2>
-          <p class="lede">
-            Melbourne-based. Comfortable with Australian business hours, US product teams, and
-            remote-first delivery. Happy to work as an employee, contractor, or sole trader IT
-            consultant depending on the engagement.
-          </p>
-          <div class="contact-grid">
-            <a class="contact-card" href="mailto:mdrahil@gmail.com">
-              <i class="icon-lucide" data-lucide="mail"></i>
-              <span>Email</span>
-              <strong>mdrahil@gmail.com</strong>
-            </a>
-            <a class="contact-card" href="tel:+61431864419">
-              <i class="icon-lucide" data-lucide="phone"></i>
-              <span>Phone</span>
-              <strong>+61 431 864 419</strong>
-            </a>
-            <a
-              class="contact-card"
-              href="https://wa.me/19296833813"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <i class="icon-lucide" data-lucide="message-circle"></i>
-              <span>WhatsApp</span>
-              <strong>Message Rahil</strong>
-            </a>
+      <!-- Contact Section -->
+      <section class="section section-dark" id="contact">
+        <div class="container">
+          <div class="contact-wrapper">
+            <div class="contact-content">
+              <h2 class="contact-title">Let's Build Something</h2>
+              <p class="contact-description">
+                Available for permanent positions, contract work, and consulting engagements. 
+                Melbourne-based, working with teams globally across AU and US time zones.
+              </p>
+
+              <div class="contact-options">
+                <h3>Engagement Types</h3>
+                <div class="engagement-types">
+                  <div class="engagement-type">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+                    <div>
+                      <strong>Permanent Roles</strong>
+                      <p>Senior engineering, AI product, technical leadership</p>
+                    </div>
+                  </div>
+                  <div class="engagement-type">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                    <div>
+                      <strong>Contract Work</strong>
+                      <p>RAG systems, cloud migration, integration projects</p>
+                    </div>
+                  </div>
+                  <div class="engagement-type">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    <div>
+                      <strong>Consulting</strong>
+                      <p>Architecture, technical strategy, sole trader engagements</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="contact-cards">
+              <a href="mailto:mdrahil@gmail.com" class="contact-card">
+                <div class="contact-card-icon">
+                  <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+                </div>
+                <div class="contact-card-content">
+                  <span class="contact-label">Email</span>
+                  <strong>mdrahil@gmail.com</strong>
+                </div>
+              </a>
+
+              <a href="tel:+61431864419" class="contact-card">
+                <div class="contact-card-icon">
+                  <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </div>
+                <div class="contact-card-content">
+                  <span class="contact-label">Phone</span>
+                  <strong>+61 431 864 419</strong>
+                </div>
+              </a>
+
+              <a href="https://wa.me/19296833813" class="contact-card" target="_blank" rel="noopener">
+                <div class="contact-card-icon">
+                  <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                </div>
+                <div class="contact-card-content">
+                  <span class="contact-label">WhatsApp</span>
+                  <strong>Message Me</strong>
+                </div>
+              </a>
+
+              <div class="contact-card info">
+                <div class="contact-card-icon">
+                  <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                </div>
+                <div class="contact-card-content">
+                  <span class="contact-label">Location</span>
+                  <strong>Melbourne, VIC</strong>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
     </main>
 
-    <footer class="site-footer">
-      <div class="wrap footer-inner">
-        <p>© <span data-year></span> Rahil Siddique. Melbourne, VIC.</p>
-        <p class="fine">Software engineering · AI/SaaS · IT &amp; systems · operations</p>
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container footer-content">
+        <div class="footer-brand">
+          <span class="footer-logo">RS</span>
+          <div>
+            <strong>Rahil Siddique</strong>
+            <p>Software Engineer & AI Specialist</p>
+          </div>
+        </div>
+        <div class="footer-info">
+          <p>&copy; <span id="year"></span> Rahil Siddique. All rights reserved.</p>
+          <p class="footer-tagline">Building production-ready AI systems · Melbourne, Australia</p>
+        </div>
       </div>
     </footer>
 
-    <script src="https://unpkg.com/lucide@0.544.0"></script>
     <script src="script.js"></script>
   </body>
 </html>
