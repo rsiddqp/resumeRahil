@@ -73,55 +73,91 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
-// Intersection Observer for fade-in animations
+// Enhanced Intersection Observer for staggered fade-in animations
 const observerOptions = {
-  threshold: 0.1,
-  rootMargin: '0px 0px -50px 0px'
+  threshold: 0.15,
+  rootMargin: '0px 0px -80px 0px'
 };
 
 const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
+  entries.forEach((entry, index) => {
     if (entry.isIntersecting) {
-      entry.target.style.opacity = '1';
-      entry.target.style.transform = 'translateY(0)';
+      const delay = entry.target.dataset.delay || 0;
+      setTimeout(() => {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0) scale(1)';
+      }, delay * 100);
+      observer.unobserve(entry.target);
     }
   });
 }, observerOptions);
 
-// Observe all sections and cards
-document.querySelectorAll('.section, .expertise-card, .timeline-item').forEach(el => {
+// Observe all animated elements with staggered delays
+document.querySelectorAll('.section, .expertise-card, .timeline-item, [data-animate]').forEach((el, index) => {
   el.style.opacity = '0';
-  el.style.transform = 'translateY(30px)';
-  el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+  el.style.transform = 'translateY(40px) scale(0.95)';
+  el.style.transition = 'opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1)';
+  el.dataset.delay = Math.min(index % 6, 5);
   observer.observe(el);
 });
 
-// Parallax effect for hero background
+// Enhanced parallax effect for hero background
 const splineContainer = document.getElementById('hero-3d');
 
 if (splineContainer) {
+  let ticking = false;
+  
   window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    const parallaxSpeed = 0.5;
-    splineContainer.style.transform = `translateY(${scrolled * parallaxSpeed}px)`;
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        const scrolled = window.pageYOffset;
+        const parallaxSpeed = 0.5;
+        const opacity = Math.max(0, 1 - scrolled / 800);
+        splineContainer.style.transform = `translateY(${scrolled * parallaxSpeed}px) scale(${1 + scrolled * 0.0001})`;
+        splineContainer.style.opacity = opacity;
+        ticking = false;
+      });
+      ticking = true;
+    }
   }, { passive: true });
 }
 
-// Cursor glow effect for interactive elements
+// Add smooth reveal for tech tags
+const techTags = document.querySelectorAll('.tech-tags span');
+techTags.forEach((tag, index) => {
+  tag.style.opacity = '0';
+  tag.style.transform = 'translateY(10px)';
+  tag.style.transition = `all 0.4s cubic-bezier(0.4, 0, 0.2, 1) ${index * 0.05}s`;
+  
+  const tagObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+        tagObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  
+  tagObserver.observe(tag);
+});
+
+// Enhanced cursor glow effect with gradient
 const createGlowEffect = () => {
   const glow = document.createElement('div');
   glow.className = 'cursor-glow';
   glow.style.cssText = `
     position: fixed;
-    width: 400px;
-    height: 400px;
+    width: 500px;
+    height: 500px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(99, 102, 241, 0.15), transparent 70%);
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.18), rgba(6, 182, 212, 0.12) 40%, transparent 70%);
     pointer-events: none;
     z-index: 9999;
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.4s ease;
     mix-blend-mode: screen;
+    filter: blur(20px);
   `;
   document.body.appendChild(glow);
 
@@ -141,11 +177,11 @@ const createGlowEffect = () => {
   });
 
   const animateGlow = () => {
-    glowX += (mouseX - glowX) * 0.1;
-    glowY += (mouseY - glowY) * 0.1;
+    glowX += (mouseX - glowX) * 0.12;
+    glowY += (mouseY - glowY) * 0.12;
     
-    glow.style.left = `${glowX - 200}px`;
-    glow.style.top = `${glowY - 200}px`;
+    glow.style.left = `${glowX - 250}px`;
+    glow.style.top = `${glowY - 250}px`;
     
     requestAnimationFrame(animateGlow);
   };
@@ -158,8 +194,8 @@ if (window.matchMedia('(pointer: fine)').matches) {
   createGlowEffect();
 }
 
-// Card tilt effect on hover (3D perspective)
-const cards = document.querySelectorAll('.expertise-card, .contact-card');
+// Enhanced card tilt effect with magnetic attraction
+const cards = document.querySelectorAll('.expertise-card, .contact-card, .timeline-content');
 
 cards.forEach(card => {
   card.addEventListener('mousemove', (e) => {
@@ -171,14 +207,19 @@ cards.forEach(card => {
       const centerX = rect.width / 2;
       const centerY = rect.height / 2;
       
-      const rotateX = ((y - centerY) / centerY) * -5;
-      const rotateY = ((x - centerX) / centerX) * 5;
+      const rotateX = ((y - centerY) / centerY) * -6;
+      const rotateY = ((x - centerX) / centerX) * 6;
       
-      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px)`;
+      const translateX = ((x - centerX) / centerX) * 5;
+      const translateY = ((y - centerY) / centerY) * 5;
+      
+      card.style.transform = `perspective(1200px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateX(${translateX}px) translateY(${translateY}px) translateZ(10px)`;
+      card.style.transition = 'none';
     }
   });
   
   card.addEventListener('mouseleave', () => {
+    card.style.transition = 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
     card.style.transform = '';
   });
 });
@@ -237,11 +278,41 @@ const preloadImages = () => {
 
 preloadImages();
 
+// Animated stats counter on scroll
+const animateStats = () => {
+  const stats = document.querySelectorAll('[data-stat]');
+  const statsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !entry.target.dataset.animated) {
+        entry.target.dataset.animated = 'true';
+        entry.target.style.animation = 'statPop 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards';
+        entry.target.style.animationDelay = `${Math.random() * 0.2}s`;
+      }
+    });
+  }, { threshold: 0.5 });
+  
+  stats.forEach(stat => statsObserver.observe(stat));
+};
+
+// Add stat animation CSS
+const style = document.createElement('style');
+style.textContent = `
+  @keyframes statPop {
+    0% { transform: scale(0.8); opacity: 0; }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); opacity: 1; }
+  }
+`;
+document.head.appendChild(style);
+
+animateStats();
+
 // Console easter egg for developers
-console.log('%cHey there! 👋', 'color: #6366f1; font-size: 24px; font-weight: bold;');
-console.log('%cLooking at the code? Let\'s talk!', 'color: #8b5cf6; font-size: 16px;');
-console.log('%cEmail: mdrahil@gmail.com', 'color: #9ca3af; font-size: 14px;');
-console.log('%cPhone: +61 431 864 419', 'color: #9ca3af; font-size: 14px;');
+console.log('%c✨ Hey there! 👋', 'color: #3b82f6; font-size: 28px; font-weight: bold; text-shadow: 0 0 10px rgba(59,130,246,0.5);');
+console.log('%c🚀 Looking at the code? Let\'s talk!', 'color: #06b6d4; font-size: 18px; font-weight: 600;');
+console.log('%c📧 Email: mdrahil@gmail.com', 'color: #94a3b8; font-size: 15px;');
+console.log('%c📱 Phone: +61 431 864 419', 'color: #94a3b8; font-size: 15px;');
+console.log('%c💼 Portfolio redesigned with modern aesthetics', 'color: #8b5cf6; font-size: 14px; font-style: italic;');
 
 // Spline scene initialization (when available)
 const initSplineScene = () => {
