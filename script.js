@@ -1,6 +1,62 @@
 // Dynamic year update
 document.getElementById('year').textContent = new Date().getFullYear();
 
+// Profile image glitch effect on load
+window.addEventListener('load', () => {
+  const profileImageWrapper = document.querySelector('.profile-image-wrapper');
+  
+  if (profileImageWrapper) {
+    // Trigger initial glitch sequence after reveal animation
+    setTimeout(() => {
+      profileImageWrapper.classList.add('glitch-active');
+      setTimeout(() => {
+        profileImageWrapper.classList.remove('glitch-active');
+      }, 2000);
+    }, 1500);
+  }
+});
+
+// Enhanced glitch effect on hover
+const profileImageContainer = document.querySelector('.profile-image-container');
+
+if (profileImageContainer) {
+  profileImageContainer.addEventListener('mouseenter', () => {
+    const glitchOverlays = document.querySelectorAll('.glitch-overlay');
+    glitchOverlays.forEach((overlay, index) => {
+      overlay.style.animation = `glitch${index + 1} 0.3s`;
+    });
+  });
+
+  profileImageContainer.addEventListener('mouseleave', () => {
+    const glitchOverlays = document.querySelectorAll('.glitch-overlay');
+    glitchOverlays.forEach(overlay => {
+      overlay.style.animation = '';
+    });
+  });
+}
+
+// Smooth scroll for badge and bubble links
+document.querySelectorAll('.floating-badge, .achievement-bubble').forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    const targetId = link.getAttribute('href');
+    const targetElement = document.querySelector(targetId);
+    
+    if (targetElement) {
+      targetElement.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center'
+      });
+      
+      // Add highlight animation to target
+      targetElement.classList.add('highlight-target');
+      setTimeout(() => {
+        targetElement.classList.remove('highlight-target');
+      }, 2000);
+    }
+  });
+});
+
 // Navbar scroll effect
 const navbar = document.querySelector('.navbar');
 let lastScroll = 0;
