@@ -1,6 +1,171 @@
 // Dynamic year update
 document.getElementById('year').textContent = new Date().getFullYear();
 
+// ===== NEWS FLASH FUNCTIONALITY =====
+const NewsFlash = {
+  currentIndex: 0,
+  stories: [],
+  intervalId: null,
+  rotationDelay: 5000, // 5 seconds per story
+
+  async fetchHackerNews() {
+    try {
+      // Fetch top stories from Hacker News API
+      const topStoriesResponse = await fetch('https://hacker-news.firebaseio.com/v0/topstories.json');
+      const topStoryIds = await topStoriesResponse.json();
+      
+      // Get first 10 stories
+      const storyPromises = topStoryIds.slice(0, 10).map(id =>
+        fetch(`https://hacker-news.firebaseio.com/v0/item/${id}.json`).then(res => res.json())
+      );
+      
+      const stories = await Promise.all(storyPromises);
+      
+      // Filter and format stories
+      this.stories = stories
+        .filter(story => story && story.title && story.url)
+        .map(story => ({
+          title: story.title,
+          url: story.url,
+          score: story.score || 0,
+          time: story.time || 0
+        }));
+      
+      if (this.stories.length > 0) {
+        this.renderStories();
+        this.startRotation();
+      }
+    } catch (error) {
+      console.error('Failed to fetch Hacker News stories:', error);
+      this.showError();
+    }
+  },
+
+  renderStories() {
+    const track = document.getElementById('news-track');
+    const nav = document.getElementById('news-nav');
+    
+    if (!track || !nav) return;
+    
+    // Clear existing content
+    track.innerHTML = '';
+    nav.innerHTML = '';
+    
+    // Create news items
+    this.stories.forEach((story, index) => {
+      const item = document.createElement('div');
+      item.className = 'news-item';
+      
+      const link = document.createElement('a');
+      link.href = story.url;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      
+      const title = document.createElement('span');
+      title.className = 'news-item-title';
+      title.textContent = story.title;
+      
+      const meta = document.createElement('span');
+      meta.className = 'news-item-meta';
+      meta.textContent = `${story.score} points`;
+      
+      link.appendChild(title);
+      link.appendChild(meta);
+      item.appendChild(link);
+      track.appendChild(item);
+      
+      // Create navigation dot
+      const dot = document.createElement('span');
+      dot.className = 'news-nav-dot';
+      if (index === 0) dot.classList.add('active');
+      dot.addEventListener('click', () => this.goToStory(index));
+      nav.appendChild(dot);
+    });
+    
+    this.updateDisplay();
+  },
+
+  updateDisplay() {
+    const track = document.getElementById('news-track');
+    const dots = document.querySelectorAll('.news-nav-dot');
+    
+    if (!track) return;
+    
+    // Update track position
+    track.style.transform = `translateX(-${this.currentIndex * 100}%)`;
+    
+    // Update active dot
+    dots.forEach((dot, index) => {
+      dot.classList.toggle('active', index === this.currentIndex);
+    });
+  },
+
+  goToStory(index) {
+    this.currentIndex = index;
+    this.updateDisplay();
+    this.resetRotation();
+  },
+
+  nextStory() {
+    this.currentIndex = (this.currentIndex + 1) % this.stories.length;
+    this.updateDisplay();
+  },
+
+  startRotation() {
+    this.stopRotation();
+    this.intervalId = setInterval(() => {
+      this.nextStory();
+    }, this.rotationDelay);
+  },
+
+  stopRotation() {
+    if (this.intervalId) {
+      clearInterval(this.intervalId);
+      this.intervalId = null;
+    }
+  },
+
+  resetRotation() {
+    this.startRotation();
+  },
+
+  showError() {
+    const track = document.getElementById('news-track');
+    if (!track) return;
+    
+    track.innerHTML = `
+      <div class="news-item">
+        <a href="https://news.ycombinator.com/" target="_blank" rel="noopener">
+          <span class="news-item-title">Visit Hacker News for the latest tech stories</span>
+        </a>
+      </div>
+    `;
+  },
+
+  init() {
+    this.fetchHackerNews();
+    
+    // Pause rotation on hover
+    const newsFlash = document.getElementById('news-flash');
+    if (newsFlash) {
+      newsFlash.addEventListener('mouseenter', () => this.stopRotation());
+      newsFlash.addEventListener('mouseleave', () => this.startRotation());
+    }
+    
+    // Refresh news every 5 minutes
+    setInterval(() => {
+      this.fetchHackerNews();
+    }, 5 * 60 * 1000);
+  }
+};
+
+// Initialize News Flash when DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => NewsFlash.init());
+} else {
+  NewsFlash.init();
+}
+
 // Profile image glitch effect on load
 window.addEventListener('load', () => {
   const profileImageWrapper = document.querySelector('.profile-image-wrapper');
